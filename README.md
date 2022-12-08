@@ -1,23 +1,37 @@
-# Alltrana - Admin
+# Boilerplate Graphql Api
 
-The admin panel for Alltrana.
+This is a boilerplate for a graphql API built with Apollo, and Prisma.
+
+## Tech stack
+
+- [Apollo Server v3 + Graphql + ExpressJS](https://www.apollographql.com/docs/apollo-server/v3)
+- [TypeGraphql](https://typegraphql.com/)
+- [Prisma](https://www.prisma.io/)
 
 ## Requirements
 
 - Node v16
 - Docker Compose
 
-## Database setup
+## Run server
 
-Start your db:
+1. Start your database. This step is only required the first time.
 
 ```
 docker compose up -d
 ```
 
-### Custom Database Setup
+2. Start server
 
-1. Set a **name** and a **port** to your database in the `docker-compose.yml` file.
+```
+npm run dev
+```
+
+You can access your server at http://localhost:4000/graphql
+
+## Custom Database Setup
+
+1. Set a **name** and a **port** to your database in the [`docker-compose.yml`](/docker-compose.yml) file.
 
    - Replace `boilerplate-graphql` to your database name.
    - Replace the port `33060` to your database port.
@@ -31,40 +45,31 @@ docker compose up -d
 docker compose up -d --force-recreate
 ```
 
-3. Push your database architecture with [Prisma](https://www.prisma.io/docs/concepts/components/prisma-migrate)
+3. Update `DATABASE_CONNECT_URL` environmental variable:
+
+```
+DATABASE_CONNECT_URL=mysql://root:{root_password}@localhost:{port}/{database_name}
+```
+
+4. Push your database architecture with [Prisma](https://www.prisma.io/docs/concepts/components/prisma-migrate)
 
 ```
 npm run prisma:run
 ```
 
-## Run the server
-
-Start your development server by running:
-
-```
-npm run dev
-```
-
-You can access your server at http://localhost:4000/graphql
-
 ## Prisma
 
-When prototyping in your local db, use the following command to push the changes to your local db.
+For more docs on prisma migration, check the prisma documentation [here](https://www.prisma.io/docs/concepts/components/prisma-migrate)
 
-```
-prisma db push
-```
+## Authorization
 
-Once changes are definitive, create a migration which will be added to the migration history
+This boilerplate already integrates authentication middlewares based on `authChecker`. In order to change the authentication requirements, you need to write your logic in the [`helpers/authChecker.ts`](src/helpers/authChecker.ts) file.
 
-```
-prisma migrate dev --name my_migration_name
-```
+For more documentation on custom authorization validator, you can check TypeGraphql [Authoration Docs](https://typegraphql.com/docs/authorization.html)
 
-and then run
+This boilerplate offers two decorators for checking authorization:
 
-```
-npm run prisma:generate
-```
+- `@AuthorizedOrNull`: Returns null if is not authenticated
+- `@AuthorizedOrThrow`: Throws Error if is not authenticated
 
-For more docs, check the prisma documentation [here](https://www.prisma.io/docs/concepts/components/prisma-migrate)
+However, TypeGraphql also offers `@Authorized` decorator out of the box.

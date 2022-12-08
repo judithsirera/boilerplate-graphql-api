@@ -1,6 +1,6 @@
 import { Context } from 'services/ContextService';
 import { NextFn, ResolverData, UseMiddleware } from 'type-graphql';
-import authChecker, { ROLES } from 'utils/authChecker';
+import authChecker, { ROLES } from 'helpers/authChecker';
 
 export function AuthorizedOrNull(...roles: ROLES[]) {
   return UseMiddleware(async (resolverData: ResolverData<Context>, next: NextFn) => {

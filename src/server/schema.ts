@@ -1,6 +1,6 @@
 import { buildSchema, BuildSchemaOptions } from 'type-graphql';
 import Container from 'typedi';
-import authChecker from 'utils/authChecker';
+import authChecker from 'helpers/authChecker';
 import { ScalarsTypeMap } from 'type-graphql/dist/schema/build-context';
 
 const scalars: ScalarsTypeMap[] = [];
