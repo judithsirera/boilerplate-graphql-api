@@ -65,7 +65,7 @@ For more docs on prisma migration, check the prisma documentation [here](https:/
 
 This boilerplate already integrates authentication middlewares based on `authChecker`. In order to change the authentication requirements, you need to write your logic in the [`helpers/authChecker.ts`](src/helpers/authChecker.ts) file.
 
-For more documentation on custom authorization validator, you can check TypeGraphql [Authoration Docs](https://typegraphql.com/docs/authorization.html)
+For more documentation on custom authorization validator, you can check TypeGraphql [Authorization Docs](https://typegraphql.com/docs/authorization.html)
 
 This boilerplate offers two decorators for checking authorization:
 
