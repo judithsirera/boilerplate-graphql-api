@@ -1,7 +1,7 @@
 {
-  "name": "alltrana-api",
+  "name": "boilerplate-graphql-api",
   "version": "1.0.0",
-  "description": "No more solo trainings",
+  "description": "Boilerplate for a graphql API built with Apollo, and Prisma.",
   "main": "server/index.ts",
   "scripts": {
     "clean": "rimraf dist/*",
