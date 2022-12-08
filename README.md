@@ -15,13 +15,19 @@ This is a boilerplate for a graphql API built with Apollo, and Prisma.
 
 ## Run server
 
-1. Start your database. This step is only required the first time.
+1. Install dependencies
+
+```
+npm install
+```
+
+2. Start your database. This step is only required the first time.
 
 ```
 docker compose up -d
 ```
 
-2. Start server
+3. Start server
 
 ```
 npm run dev
