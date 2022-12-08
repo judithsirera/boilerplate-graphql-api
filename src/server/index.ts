@@ -17,7 +17,7 @@ import ApolloLandingPlugin from './ApolloLandingPlugin';
 import ContextService from 'services/ContextService';
 
 const API_PATH = '/graphql';
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4000;
 
 useContainer(Container, { fallback: true, fallbackOnErrors: true });
 
